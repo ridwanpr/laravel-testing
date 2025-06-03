@@ -63,7 +63,18 @@
                                     @if (auth()->user()->is_admin)
                                         <td class="w-1/5 px-6 py-4 text-sm text-gray-600 border border-gray-300">
                                             <a href="{{ route('products.edit', $product->id) }}"
-                                                class="text-indigo-600 hover:text-indigo-900 font-medium">Edit</a>
+                                                class="px-2 py-1 text-indigo-600 hover:text-indigo-900 font-medium bg-gray-100 rounded">
+                                                Edit
+                                            </a>
+                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST"
+                                                class="inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="px-2 ms-1 py-1 text-red-600 hover:text-red-900 font-medium bg-gray-100 rounded">
+                                                    Delete
+                                                </button>
+                                            </form>
                                         </td>
                                     @endif
                                 </tr>
